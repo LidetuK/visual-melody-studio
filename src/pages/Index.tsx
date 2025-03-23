@@ -7,6 +7,9 @@ import About from '@/components/home/About';
 import Services from '@/components/home/Services';
 import Showcase from '@/components/home/Showcase';
 import Contact from '@/components/home/Contact';
+import ConceptToScreen from '@/components/home/ConceptToScreen';
+import BehindScenes from '@/components/home/BehindScenes';
+import Stories from '@/components/home/Stories';
 
 const Index = () => {
   useEffect(() => {
@@ -22,7 +25,10 @@ const Index = () => {
       <main className="flex-grow">
         <Hero />
         <About />
+        <ConceptToScreen />
         <Services />
+        <BehindScenes />
+        <Stories />
         <Showcase />
         <Contact />
       </main>

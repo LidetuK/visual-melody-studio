@@ -3,11 +3,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Play } from 'lucide-react';
 
 const Hero = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showVideoModal, setShowVideoModal] = useState(false);
 
   const slides = [
     {
@@ -63,7 +65,7 @@ const Hero = () => {
           playsInline
           className="h-full w-full object-cover opacity-60"
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-32809-large.mp4" type="video/mp4" />
+          <source src="https://player.vimeo.com/external/551875850.hd.mp4?s=dc4f88ede61e8eb0fd2977b0e5efcc64a33c7b3e&profile_id=175" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         
@@ -85,7 +87,7 @@ const Hero = () => {
                     : "opacity-0 translate-y-4 pointer-events-none"
                 )}
               >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-white mb-4 leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-4 leading-tight">
                   {slide.title}
                 </h1>
                 <p className="mb-8 text-lg md:text-xl text-gray-300 max-w-lg mx-auto">
@@ -95,21 +97,20 @@ const Hero = () => {
                   <Button 
                     asChild
                     size="lg" 
-                    className="bg-elfign-red hover:bg-elfign-red/90 text-white"
+                    className="bg-elfign-red hover:bg-elfign-red/90 text-white text-lg px-8"
                   >
                     <Link to={slide.link}>
                       {slide.cta}
                     </Link>
                   </Button>
                   <Button 
-                    asChild
+                    onClick={() => setShowVideoModal(true)}
                     size="lg" 
                     variant="outline"
-                    className="border-white text-white hover:bg-white/10"
+                    className="border-white text-white hover:bg-white/10 text-lg px-8 group"
                   >
-                    <Link to="/contact">
-                      Get in Touch
-                    </Link>
+                    <Play size={20} className="mr-2 group-hover:scale-110 transition-transform" />
+                    Watch Showreel
                   </Button>
                 </div>
               </div>
@@ -134,6 +135,35 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      {/* Cinematic tagline - Inspired by your screenshots */}
+      <div className="absolute bottom-32 right-0 left-0 z-10 text-center md:text-right md:right-16 md:left-auto">
+        <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light italic tracking-wider animate-fade-in opacity-0" 
+             style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
+          it all starts with a vision.
+        </h2>
+      </div>
+
+      {/* Video Modal */}
+      {showVideoModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 animate-fade-in">
+          <div className="relative w-11/12 max-w-5xl aspect-video bg-black">
+            <button 
+              onClick={() => setShowVideoModal(false)}
+              className="absolute -top-10 right-0 text-white hover:text-elfign-gold"
+            >
+              Close
+            </button>
+            <iframe 
+              src="https://player.vimeo.com/video/500604929?autoplay=1&title=0&byline=0&portrait=0" 
+              className="w-full h-full" 
+              frameBorder="0" 
+              allow="autoplay; fullscreen" 
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div>
+      )}
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 animate-bounce">
