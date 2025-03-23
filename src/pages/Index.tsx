@@ -10,6 +10,7 @@ import Contact from '@/components/home/Contact';
 import ConceptToScreen from '@/components/home/ConceptToScreen';
 import BehindScenes from '@/components/home/BehindScenes';
 import Stories from '@/components/home/Stories';
+import AboutSection from '@/components/home/AboutSection';
 
 const Index = () => {
   useEffect(() => {
@@ -24,6 +25,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <AboutSection />
         <About />
         <ConceptToScreen />
         <Services />
