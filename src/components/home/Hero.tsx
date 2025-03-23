@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Play } from 'lucide-react';
 
 const Hero = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRef = useRef<HTMLIFrameElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [showVideoModal, setShowVideoModal] = useState(false);
@@ -33,41 +33,47 @@ const Hero = () => {
   ];
 
   useEffect(() => {
-    // Handle video loading
-    if (videoRef.current) {
-      videoRef.current.addEventListener('loadeddata', () => {
-        setIsVideoLoaded(true);
-      });
-    }
+    // Set video as loaded after a short delay to ensure smooth transition
+    const timer = setTimeout(() => {
+      setIsVideoLoaded(true);
+    }, 1000);
 
     // Auto-rotate slides
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearTimeout(timer);
+      clearInterval(interval);
+    };
   }, [slides.length]);
 
   return (
     <div className="relative h-screen w-full overflow-hidden bg-elfign-black">
-      {/* Video Background */}
+      {/* YouTube Video Background */}
       <div className="absolute inset-0 z-0">
         <div className={cn("absolute inset-0 bg-elfign-black transition-opacity duration-1000", {
           "opacity-0": isVideoLoaded,
           "opacity-100": !isVideoLoaded
         })} />
         
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="h-full w-full object-cover opacity-60"
-        >
-          <source src="https://player.vimeo.com/external/551875850.hd.mp4?s=dc4f88ede61e8eb0fd2977b0e5efcc64a33c7b3e&profile_id=175" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div className="absolute inset-0 h-full w-full">
+          <iframe 
+            ref={videoRef}
+            src="https://www.youtube.com/embed/U3wlC7gocKo?autoplay=1&mute=1&loop=1&controls=0&showinfo=0&rel=0&iv_load_policy=3&playlist=U3wlC7gocKo"
+            className="absolute inset-0 h-[calc(100%+200px)] w-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            style={{
+              pointerEvents: 'none',
+              top: '-100px',
+              left: '0',
+              zIndex: '0',
+              opacity: 0.6
+            }}
+            title="Elfign Entertainment Showreel"
+          ></iframe>
+        </div>
         
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-elfign-black/70 via-transparent to-elfign-black/90" />
