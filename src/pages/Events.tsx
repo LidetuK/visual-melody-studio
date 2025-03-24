@@ -1,11 +1,10 @@
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalendarDays, MapPin, Clock, User } from "lucide-react";
+import { Calendar, MapPin, Clock, Users } from "lucide-react";
 
 interface Event {
   id: number;
@@ -16,94 +15,83 @@ interface Event {
   location: string;
   category: string;
   image: string;
-  host: string;
+  attendees: number;
 }
 
 const events: Event[] = [
   {
     id: 1,
-    title: "Filmmaking Workshop: The Art of Visual Storytelling",
-    description: "Learn the fundamentals of visual storytelling from our experienced directors and cinematographers.",
+    title: "Film Industry Networking Night",
+    description: "Connect with professionals from across the film and entertainment industry in a relaxed setting.",
     date: "June 15, 2023",
-    time: "10:00 AM - 4:00 PM",
-    location: "Elfign Studios, Los Angeles",
-    category: "Workshop",
-    image: "https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmlsbW1ha2luZ3xlbnwwfHwwfHx8MA%3D%3D",
-    host: "David Anderson, Creative Director"
+    time: "7:00 PM - 10:00 PM",
+    location: "Downtown Arts Center, Los Angeles",
+    category: "Networking",
+    image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZXZlbnR8ZW58MHx8MHx8fDA%3D",
+    attendees: 120
   },
   {
     id: 2,
-    title: "Film Screening: 'Echoes of Tomorrow'",
-    description: "Join us for the premiere of our latest documentary exploring the impact of technology on society.",
+    title: "Documentary Filmmaking Workshop",
+    description: "Learn essential techniques for compelling documentary storytelling from award-winning filmmakers.",
     date: "July 8, 2023",
-    time: "7:00 PM - 10:00 PM",
-    location: "Grand Theater, New York",
-    category: "Screening",
-    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGhlYXRlciUyMHNjcmVlbnxlbnwwfHwwfHx8MA%3D%3D",
-    host: "Elfign Entertainment"
+    time: "10:00 AM - 4:00 PM",
+    location: "Elfign Studio, New York",
+    category: "Workshop",
+    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d29ya3Nob3B8ZW58MHx8MHx8fDA%3D",
+    attendees: 45
   },
   {
     id: 3,
     title: "Music Production Masterclass",
-    description: "A hands-on session with our audio engineers and music producers on creating compelling soundscapes.",
+    description: "A hands-on masterclass exploring advanced techniques in modern music production.",
     date: "August 22, 2023",
     time: "1:00 PM - 5:00 PM",
     location: "Sound Studio, Nashville",
     category: "Masterclass",
-    image: "https://images.unsplash.com/photo-1619983081563-430f63602796?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bXVzaWMlMjBwcm9kdWN0aW9ufGVufDB8fDB8fHww",
-    host: "Sarah Martinez, Head of Audio"
+    image: "https://images.unsplash.com/photo-1598653222000-6b7b7a552625?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bXVzaWMlMjBwcm9kdWN0aW9ufGVufDB8fDB8fHww",
+    attendees: 35
   },
   {
     id: 4,
-    title: "Industry Panel: The Future of Entertainment",
-    description: "Leading experts discuss emerging trends and the future landscape of the entertainment industry.",
-    date: "September 5, 2023",
-    time: "6:00 PM - 8:30 PM",
-    location: "Conference Center, Los Angeles",
-    category: "Panel",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbmZlcmVuY2V8ZW58MHx8MHx8fDA%3D",
-    host: "Elfign Entertainment"
+    title: "Animation Festival",
+    description: "Celebrating innovation in animation with screenings, panels, and hands-on demonstrations.",
+    date: "September 10-12, 2023",
+    time: "Various Times",
+    location: "Creative Arts Building, San Francisco",
+    category: "Festival",
+    image: "https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8YW5pbWF0aW9ufGVufDB8fDB8fHww",
+    attendees: 350
   },
   {
     id: 5,
-    title: "Networking Event: Creative Collaborations",
-    description: "Connect with fellow creatives, industry professionals, and potential collaborators in a relaxed setting.",
-    date: "October 12, 2023",
-    time: "7:00 PM - 10:00 PM",
-    location: "The Loft, San Francisco",
-    category: "Networking",
-    image: "https://images.unsplash.com/photo-1511795409834-432e50ce8644?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fG5ldHdvcmtpbmd8ZW58MHx8MHx8fDA%3D",
-    host: "Elfign Entertainment"
+    title: "Film Screening & Director Q&A",
+    description: "Special screening of our latest production followed by a Q&A session with the director and cast.",
+    date: "October 5, 2023",
+    time: "6:30 PM - 9:30 PM",
+    location: "Grand Theater, Chicago",
+    category: "Screening",
+    image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bW92aWUlMjBzY3JlZW5pbmd8ZW58MHx8MHx8fDA%3D",
+    attendees: 180
   },
   {
     id: 6,
-    title: "Animation Workshop for Beginners",
-    description: "Learn the basics of animation from our seasoned animators. Perfect for those just starting their creative journey.",
+    title: "Industry Panel: The Future of Entertainment",
+    description: "Leading experts discuss emerging trends and the future landscape of entertainment production.",
     date: "November 18, 2023",
-    time: "9:00 AM - 3:00 PM",
-    location: "Creative Hub, Austin",
-    category: "Workshop",
-    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YW5pbWF0aW9ufGVufDB8fDB8fHww",
-    host: "Michael Chen, Lead Animator"
+    time: "2:00 PM - 4:00 PM",
+    location: "Media Conference Center, Miami",
+    category: "Panel",
+    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHBhbmVsJTIwZGlzY3Vzc2lvbnxlbnwwfHwwfHx8MA%3D%3D",
+    attendees: 95
   }
 ];
 
 const Events = () => {
-  const [filter, setFilter] = useState("all");
-  const [filteredEvents, setFilteredEvents] = useState(events);
-
   useEffect(() => {
     window.scrollTo(0, 0);
     document.title = "Events | Elfign Entertainment";
   }, []);
-
-  useEffect(() => {
-    if (filter === "all") {
-      setFilteredEvents(events);
-    } else {
-      setFilteredEvents(events.filter((event) => event.category.toLowerCase() === filter));
-    }
-  }, [filter]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -112,61 +100,51 @@ const Events = () => {
         <section className="py-12 md:py-20 bg-gradient-to-b from-background to-muted/20">
           <div className="container px-4 md:px-6">
             <div className="text-center max-w-3xl mx-auto mb-12">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading mb-4">Events</h1>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading mb-4">Upcoming Events</h1>
               <p className="text-xl text-muted-foreground">
-                Join us at our upcoming events, workshops, screenings, and industry meet-ups
+                Join us at our upcoming events, workshops, and gatherings to connect with industry professionals
               </p>
             </div>
 
-            <div className="my-8">
-              <Tabs defaultValue="all" className="w-full justify-center">
-                <TabsList className="mx-auto">
-                  <TabsTrigger value="all" onClick={() => setFilter("all")}>All Events</TabsTrigger>
-                  <TabsTrigger value="workshop" onClick={() => setFilter("workshop")}>Workshops</TabsTrigger>
-                  <TabsTrigger value="screening" onClick={() => setFilter("screening")}>Screenings</TabsTrigger>
-                  <TabsTrigger value="masterclass" onClick={() => setFilter("masterclass")}>Masterclasses</TabsTrigger>
-                  <TabsTrigger value="panel" onClick={() => setFilter("panel")}>Panels</TabsTrigger>
-                </TabsList>
-              </Tabs>
-            </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-              {filteredEvents.map((event) => (
+              {events.map((event) => (
                 <Card key={event.id} className="overflow-hidden transition-all duration-300 hover:shadow-lg animate-fade-in">
-                  <div className="aspect-video w-full overflow-hidden relative">
+                  <div className="aspect-video w-full overflow-hidden">
                     <img
                       src={event.image}
                       alt={event.title}
                       className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                     />
-                    <div className="absolute top-3 right-3 bg-primary text-primary-foreground text-xs font-medium px-2.5 py-0.5 rounded-full">
-                      {event.category}
-                    </div>
                   </div>
                   <CardHeader>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-medium px-2.5 py-0.5 rounded-full bg-primary/10 text-primary">
+                        {event.category}
+                      </span>
+                    </div>
                     <CardTitle className="text-xl">{event.title}</CardTitle>
-                    <p className="text-sm text-muted-foreground mt-2">{event.description}</p>
+                    <CardDescription className="line-clamp-2">{event.description}</CardDescription>
                   </CardHeader>
-                  <CardContent className="space-y-2">
-                    <div className="flex items-center text-sm">
-                      <CalendarDays className="h-4 w-4 mr-2 text-muted-foreground" />
+                  <CardContent className="space-y-2 text-sm text-muted-foreground">
+                    <div className="flex items-center">
+                      <Calendar className="h-4 w-4 mr-2" />
                       <span>{event.date}</span>
                     </div>
-                    <div className="flex items-center text-sm">
-                      <Clock className="h-4 w-4 mr-2 text-muted-foreground" />
+                    <div className="flex items-center">
+                      <Clock className="h-4 w-4 mr-2" />
                       <span>{event.time}</span>
                     </div>
-                    <div className="flex items-center text-sm">
-                      <MapPin className="h-4 w-4 mr-2 text-muted-foreground" />
+                    <div className="flex items-center">
+                      <MapPin className="h-4 w-4 mr-2" />
                       <span>{event.location}</span>
                     </div>
-                    <div className="flex items-center text-sm">
-                      <User className="h-4 w-4 mr-2 text-muted-foreground" />
-                      <span>{event.host}</span>
+                    <div className="flex items-center">
+                      <Users className="h-4 w-4 mr-2" />
+                      <span>{event.attendees} attending</span>
                     </div>
                   </CardContent>
                   <CardFooter>
-                    <Button className="w-full bg-elfign-red hover:bg-elfign-red/90 text-white">
+                    <Button variant="default" className="w-full">
                       Register Now
                     </Button>
                   </CardFooter>
@@ -174,19 +152,11 @@ const Events = () => {
               ))}
             </div>
 
-            {filteredEvents.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-lg text-muted-foreground">No events found in this category. Check back later for updates.</p>
-              </div>
-            )}
-
-            {filteredEvents.length > 0 && (
-              <div className="flex justify-center mt-12">
-                <Button variant="outline" className="mx-auto">
-                  Load More Events
-                </Button>
-              </div>
-            )}
+            <div className="flex justify-center mt-12">
+              <Button variant="outline" className="mx-auto">
+                View All Events
+              </Button>
+            </div>
           </div>
         </section>
       </main>
