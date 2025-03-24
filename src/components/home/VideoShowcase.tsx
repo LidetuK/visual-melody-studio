@@ -90,7 +90,7 @@ const VideoShowcase = () => {
       {videoShowcaseItems.map((item, index) => (
         <section
           key={index}
-          ref={el => sectionRefs.current[index] = el}
+          ref={(el: HTMLDivElement | null) => sectionRefs.current[index] = el}
           className={cn(
             "relative h-screen w-full overflow-hidden",
             index % 2 === 0 ? "bg-elfign-black" : "bg-elfign-black/90"
