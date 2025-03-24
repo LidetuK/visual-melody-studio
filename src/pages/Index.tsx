@@ -11,6 +11,7 @@ import ConceptToScreen from '@/components/home/ConceptToScreen';
 import BehindScenes from '@/components/home/BehindScenes';
 import Stories from '@/components/home/Stories';
 import AboutSection from '@/components/home/AboutSection';
+import VideoShowcase from '@/components/home/VideoShowcase';
 
 const Index = () => {
   useEffect(() => {
@@ -25,6 +26,7 @@ const Index = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <VideoShowcase />
         <AboutSection />
         <About />
         <ConceptToScreen />
