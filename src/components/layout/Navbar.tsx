@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Briefcase, Info, Newspaper, CalendarDays, Settings } from 'lucide-react';
@@ -12,6 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import * as React from 'react';
 
 interface NavItem {
   label: string;
