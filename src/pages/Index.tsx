@@ -12,6 +12,9 @@ import BehindScenes from '@/components/home/BehindScenes';
 import Stories from '@/components/home/Stories';
 import AboutSection from '@/components/home/AboutSection';
 import VideoShowcase from '@/components/home/VideoShowcase';
+import TeamSection from '@/components/home/TeamSection';
+import AIChatWidget from '@/components/common/AIChatWidget';
+import { initSmoothScrolling } from '@/lib/smoothScroll';
 
 const Index = () => {
   useEffect(() => {
@@ -19,6 +22,8 @@ const Index = () => {
     window.scrollTo(0, 0);
     // Set page title
     document.title = "Elfign Entertainment - Premium Film & Music Production";
+    // Initialize smooth scrolling
+    initSmoothScrolling();
   }, []);
 
   return (
@@ -34,9 +39,11 @@ const Index = () => {
         <BehindScenes />
         <Stories />
         <Showcase />
+        <TeamSection />
         <Contact />
       </main>
       <Footer />
+      <AIChatWidget />
     </div>
   );
 };

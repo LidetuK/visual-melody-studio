@@ -1,16 +1,10 @@
 
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import SocialMediaIcons from '@/components/common/SocialMediaIcons';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 interface NavItem {
   label: string;
@@ -140,59 +134,67 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Navigation with Dropdowns */}
+          {/* Desktop Navigation with Hover Dropdowns */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             <nav className="flex items-center space-x-6">
               {navItems.map((item) => (
                 item.hasDropdown ? (
-                  <DropdownMenu key={item.href}>
-                    <DropdownMenuTrigger className="flex items-center text-sm font-medium transition-colors focus:outline-none">
-                      <span className={cn(
-                        'text-sm font-medium transition-colors',
+                  <div key={item.href} className="relative group">
+                    <Link
+                      to={item.href}
+                      className={cn(
+                        'flex items-center text-sm font-medium transition-colors line-animation group-hover:text-elfign-red',
                         location.pathname.includes(item.href)
                           ? 'text-elfign-red'
-                          : 'text-foreground/80 hover:text-elfign-red'
-                      )}>
-                        {item.label}
-                      </span>
-                      <ChevronDown 
-                        className="ml-1 h-4 w-4" 
-                        aria-hidden="true" 
-                      />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="center" className="w-48 bg-background/95 backdrop-blur-sm border border-border/30">
+                          : 'text-foreground/80'
+                      )}
+                    >
+                      <span>{item.label}</span>
+                      <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="16" 
+                        height="16" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
+                      >
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                      </svg>
+                    </Link>
+                    <div className="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-background/95 backdrop-blur-sm border border-border/30 p-1 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                       {item.dropdownItems?.map((dropdownItem) => (
-                        <DropdownMenuItem key={dropdownItem.href} asChild>
-                          <Link 
-                            to={dropdownItem.href} 
-                            className="w-full cursor-pointer px-3 py-2 text-sm hover:bg-accent"
-                          >
-                            {dropdownItem.title}
-                          </Link>
-                        </DropdownMenuItem>
-                      ))}
-                      <DropdownMenuItem asChild className="border-t border-border/30 mt-1 pt-1">
                         <Link 
-                          to={item.href} 
-                          className="w-full cursor-pointer px-3 py-2 text-sm text-elfign-red hover:bg-accent flex items-center"
+                          key={dropdownItem.href}
+                          to={dropdownItem.href} 
+                          className="block rounded-sm px-3 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-elfign-red"
                         >
-                          View all {item.label.toLowerCase()}
-                          <svg 
-                            xmlns="http://www.w3.org/2000/svg" 
-                            viewBox="0 0 20 20" 
-                            fill="currentColor" 
-                            className="w-4 h-4 ml-1"
-                          >
-                            <path 
-                              fillRule="evenodd" 
-                              d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" 
-                              clipRule="evenodd" 
-                            />
-                          </svg>
+                          {dropdownItem.title}
                         </Link>
-                      </DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
+                      ))}
+                      <Link 
+                        to={item.href} 
+                        className="mt-1 pt-1 block border-t border-border/30 rounded-sm px-3 py-2 text-sm text-elfign-red hover:bg-accent flex items-center"
+                      >
+                        View all {item.label.toLowerCase()}
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          viewBox="0 0 20 20" 
+                          fill="currentColor" 
+                          className="w-4 h-4 ml-1"
+                        >
+                          <path 
+                            fillRule="evenodd" 
+                            d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" 
+                            clipRule="evenodd" 
+                          />
+                        </svg>
+                      </Link>
+                    </div>
+                  </div>
                 ) : (
                   <Link
                     key={item.href}
@@ -215,8 +217,12 @@ const Navbar = () => {
               <SocialMediaIcons iconSize={16} />
             </div>
             
-            <Button variant="default" className="bg-elfign-red hover:bg-elfign-red/90 text-white">
-              Get in Touch
+            <Button 
+              variant="default" 
+              className="bg-elfign-red hover:bg-elfign-red/90 text-white"
+              onClick={() => document.getElementById('chat-widget')?.classList.toggle('hidden')}
+            >
+              Ask AI
             </Button>
           </div>
 
@@ -306,9 +312,12 @@ const Navbar = () => {
           <Button
             variant="default"
             className="bg-elfign-red hover:bg-elfign-red/90 text-white mt-4 w-full max-w-xs"
-            onClick={() => setIsOpen(false)}
+            onClick={() => {
+              setIsOpen(false);
+              document.getElementById('chat-widget')?.classList.toggle('hidden');
+            }}
           >
-            Get in Touch
+            Ask AI
           </Button>
         </div>
       </div>
