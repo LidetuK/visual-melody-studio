@@ -1,6 +1,7 @@
 
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, Youtube, Mail, Phone } from 'lucide-react';
+import { Mail, Phone } from 'lucide-react';
+import SocialMediaIcons from '@/components/common/SocialMediaIcons';
 
 const Footer = () => {
   return (
@@ -18,20 +19,7 @@ const Footer = () => {
             <p className="text-gray-400 text-sm max-w-xs">
               Creating compelling visual stories through film, photography, and music production.
             </p>
-            <div className="flex space-x-4">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-gray-400 hover:text-elfign-gold transition-colors">
-                <Facebook size={20} />
-              </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-gray-400 hover:text-elfign-gold transition-colors">
-                <Instagram size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="text-gray-400 hover:text-elfign-gold transition-colors">
-                <Twitter size={20} />
-              </a>
-              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="text-gray-400 hover:text-elfign-gold transition-colors">
-                <Youtube size={20} />
-              </a>
-            </div>
+            <SocialMediaIcons />
           </div>
 
           {/* Quick links */}

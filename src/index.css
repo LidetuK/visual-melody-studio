@@ -74,7 +74,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
   }
 
   body {
@@ -130,7 +130,12 @@
   }
 
   .smooth-scroll {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth !important;
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) !important;
+  }
+
+  .section-transition {
+    transition: opacity 0.8s ease, transform 0.8s ease;
   }
 }
 
@@ -232,4 +237,21 @@
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+/* Smooth scrolling utilities */
+html.smooth-scrolling,
+.smooth-scrolling {
+  scroll-behavior: smooth !important;
+}
+
+.scroll-container {
+  scroll-behavior: smooth !important;
+  overflow-y: scroll;
+}
+
+.scroll-section {
+  min-height: 100vh;
+  transition: transform 0.7s cubic-bezier(0.645, 0.045, 0.355, 1), 
+              opacity 0.7s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
