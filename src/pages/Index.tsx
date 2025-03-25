@@ -13,6 +13,7 @@ import Stories from '@/components/home/Stories';
 import AboutSection from '@/components/home/AboutSection';
 import VideoShowcase from '@/components/home/VideoShowcase';
 import TeamSection from '@/components/home/TeamSection';
+import BehindTheCamera from '@/components/home/BehindTheCamera';
 import AIChatWidget from '@/components/common/AIChatWidget';
 import { initSmoothScrolling } from '@/lib/smoothScroll';
 
@@ -36,6 +37,7 @@ const Index = () => {
         <About />
         <ConceptToScreen />
         <Services />
+        <BehindTheCamera />
         <BehindScenes />
         <Stories />
         <Showcase />

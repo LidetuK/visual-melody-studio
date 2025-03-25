@@ -41,7 +41,7 @@ const BehindScenes = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-elfign-black/80 z-10" />
         <img 
-          src="public/lovable-uploads/3090da7d-ed7e-44c1-8000-3596c8500119.png" 
+          src="public/lovable-uploads/46cd21d6-4fec-4a57-aed4-43769efe5f83.png" 
           alt="Behind the scenes" 
           className="object-cover w-full h-full opacity-40"
         />
@@ -61,6 +61,29 @@ const BehindScenes = () => {
           <p className="text-gray-300 text-lg">
             First-class footage is no feat of quality, which is why our team has the latest professional video equipment. We are not just able to provide aerial footage from drones, we make sure every footage is the highest quality and produce filming with a RED film cameras.
           </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className={cn(
+            "aspect-video rounded-lg overflow-hidden transition-all duration-1000",
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-12"
+          )}>
+            <img 
+              src="public/lovable-uploads/23e8ff29-a776-4d5f-b4a3-1172f355de2d.png" 
+              alt="Production team filming on location" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <div className={cn(
+            "aspect-video rounded-lg overflow-hidden transition-all duration-1000",
+            isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-12"
+          )}>
+            <img 
+              src="public/lovable-uploads/1d451c75-8255-4927-bd64-b8d4c575d89c.png" 
+              alt="Forest scene production setup" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
         <div 

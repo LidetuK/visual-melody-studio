@@ -8,31 +8,31 @@ const storyItems = [
   {
     title: "The Last Mission",
     category: "Feature Film",
-    image: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    image: "public/lovable-uploads/0a9e5c94-302a-4d24-9fc9-71d4641bdc9e.png",
     slug: "the-last-mission"
   },
   {
     title: "City Shadows",
     category: "TV Series",
-    image: "https://images.unsplash.com/photo-1594908900066-3f47337549d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    image: "public/lovable-uploads/a652a96f-b15a-4526-b10b-2157eeafe2fa.png",
     slug: "city-shadows"
   },
   {
     title: "Beyond Borders",
     category: "Documentary",
-    image: "public/lovable-uploads/76b6d647-f303-4d0f-9960-b3fa254fb480.png",
+    image: "public/lovable-uploads/f35326e6-bba4-4e43-923a-685116abfcd1.png",
     slug: "beyond-borders"
   },
   {
     title: "Midnight Express",
     category: "Short Film",
-    image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1625&q=80",
+    image: "public/lovable-uploads/2e3e23f2-101a-4275-82b4-95373ae796b5.png",
     slug: "midnight-express"
   },
   {
     title: "Urban Pulse",
     category: "Music Video",
-    image: "https://images.unsplash.com/photo-1525018923-1ebe8261a6a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80",
+    image: "public/lovable-uploads/59f4682a-8a68-44ee-a25f-f5f2ed224079.png",
     slug: "urban-pulse"
   }
 ];
