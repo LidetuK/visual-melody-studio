@@ -20,7 +20,7 @@ const AIChatWidget = () => {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const API_KEY = "AIzaSyDHRlddSrhBAZZPMXYN9wi3nKt0gPdPkJE";
+  const API_KEY = "sk-7c6a8a160ab646be9e19793ba72812f4";
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -40,32 +40,36 @@ const AIChatWidget = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent', {
+      // DeepSeek API call
+      const response = await fetch('https://api.deepseek.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-goog-api-key': API_KEY,
+          'Authorization': `Bearer ${API_KEY}`,
         },
         body: JSON.stringify({
-          contents: [
+          model: "deepseek-chat",
+          messages: [
             {
-              role: 'user',
-              parts: [
-                {
-                  text: `You are an AI assistant for Elfign Entertainment, a film and music production company. Your name is ElfAI. Be helpful, concise, and professional. Focus on questions about film production, music, entertainment industry, and the company's services. Limit responses to 3-4 sentences when possible. Answer: ${input}`
-                }
-              ]
+              role: "system",
+              content: "You are an AI assistant for Elfign Entertainment, a film and music production company. Your name is ElfAI. Be helpful, concise, and professional. Focus on questions about film production, music, entertainment industry, and the company's services. Limit responses to 3-4 sentences when possible."
+            },
+            {
+              role: "user",
+              content: input
             }
-          ]
+          ],
+          temperature: 0.7,
+          max_tokens: 150
         })
       });
 
       if (!response.ok) {
-        throw new Error('Failed to get a response from the AI');
+        throw new Error(`API error: ${response.status}`);
       }
 
       const data = await response.json();
-      const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I couldn\'t generate a response at this time.';
+      const aiReply = data.choices?.[0]?.message?.content || 'Sorry, I couldn\'t generate a response at this time.';
       
       setMessages(prev => [...prev, { role: 'assistant', content: aiReply }]);
     } catch (error) {
