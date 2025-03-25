@@ -38,8 +38,8 @@ const Index = () => {
         <ConceptToScreen />
         <Services />
         <BehindTheCamera />
-        <BehindScenes />
         <Stories />
+        <BehindScenes />
         <Showcase />
         <TeamSection />
         <Contact />

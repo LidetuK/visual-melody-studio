@@ -2,16 +2,18 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { Play } from 'lucide-react';
 
 interface ShowcaseCardProps {
   title: string;
   category: string;
   image: string;
+  video?: string; // New optional video URL prop
   slug: string;
   index: number;
 }
 
-const ShowcaseCard = ({ title, category, image, slug, index }: ShowcaseCardProps) => {
+const ShowcaseCard = ({ title, category, image, video, slug, index }: ShowcaseCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -45,6 +47,20 @@ const ShowcaseCard = ({ title, category, image, slug, index }: ShowcaseCardProps
           transform: isHovered ? 'scale(1.05)' : 'scale(1)'
         }}
       />
+
+      {/* Video play button that appears on hover if video exists */}
+      {video && (
+        <div 
+          className={cn(
+            "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20",
+            "w-14 h-14 bg-elfign-red rounded-full flex items-center justify-center",
+            "transition-all duration-500 transform",
+            isHovered ? "opacity-100 scale-100" : "opacity-0 scale-90"
+          )}
+        >
+          <Play className="w-6 h-6 text-white ml-1" />
+        </div>
+      )}
 
       <div className="relative z-10 flex h-full flex-col p-6 justify-end">
         <div 
