@@ -34,6 +34,13 @@ const aboutItems = [
   { title: 'Careers', href: '/about/careers' },
 ];
 
+const coursesItems = [
+  { title: 'Film Production Courses', href: '/courses#film-production' },
+  { title: 'Music Production Courses', href: '/courses#music-production' },
+  { title: 'Post-Production Courses', href: '/courses#post-production' },
+  { title: 'Animation Courses', href: '/courses#animation' },
+];
+
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
   { 
@@ -47,6 +54,12 @@ const navItems: NavItem[] = [
     href: '/work', 
     hasDropdown: true,
     dropdownItems: workItems
+  },
+  { 
+    label: 'Courses', 
+    href: '/courses', 
+    hasDropdown: true,
+    dropdownItems: coursesItems
   },
   { 
     label: 'About', 

@@ -14,6 +14,8 @@ import Services from "./pages/Services";
 import Work from "./pages/Work";
 import News from "./pages/News";
 import Events from "./pages/Events";
+import Courses from "./pages/Courses";
+import CourseDetail from "./pages/CourseDetail";
 
 // Inner pages for About section
 import OurStory from "./pages/about/OurStory";
@@ -63,6 +65,8 @@ const App = () => (
           <Route path="/work/:slug" element={<WorkDetail />} />
           <Route path="/news" element={<News />} />
           <Route path="/events" element={<Events />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/courses/:slug" element={<CourseDetail />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
