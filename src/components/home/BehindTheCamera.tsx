@@ -209,11 +209,11 @@ const BehindTheCamera = () => {
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <h3 className="text-5xl md:text-7xl font-bold tracking-widest text-white">
-              B E Y O N D
+            
             </h3>
           </div>
           <div className="absolute bottom-6 left-6 text-white">
-            <p className="text-xl font-light">Coming Soon</p>
+            <p className="text-xl font-light"></p>
           </div>
         </div>
       </div>

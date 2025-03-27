@@ -15,6 +15,7 @@ import TeamSection from '@/components/home/TeamSection';
 import BehindTheCamera from '@/components/home/BehindTheCamera';
 import AIChatWidget from '@/components/common/AIChatWidget';
 import { initSmoothScrolling } from '@/lib/smoothScroll';
+import Stories from '@/components/home/Stories'
 
 const Index = () => {
   useEffect(() => {
@@ -35,11 +36,9 @@ const Index = () => {
         <AboutSection />
         <Services />
         <BehindTheCamera />
+        <Stories/>
         <TeamSection />
         <Contact />
-        <ConceptToScreen />
-        <BehindScenes />
-        <Showcase />
       </main>
       <Footer />
       <AIChatWidget />
