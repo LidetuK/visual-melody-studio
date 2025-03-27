@@ -48,7 +48,7 @@ const About = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-elfign-red/20 to-elfign-gold/20 mix-blend-multiply rounded-lg z-10" />
             <img
-              src="public/lovable-uploads/c7b69243-2ae5-48f0-a6ca-11dde5305e17.png"
+              src="/c7b69243-2ae5-48f0-a6ca-11dde5305e17.png"
               alt="Film production team"
               className="w-full h-full object-cover object-center rounded-lg"
             />

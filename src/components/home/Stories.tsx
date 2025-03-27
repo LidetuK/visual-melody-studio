@@ -15,35 +15,35 @@ const storyItems = [
   {
     title: "The Last Mission",
     category: "Feature Film",
-    image: "public/lovable-uploads/0a9e5c94-302a-4d24-9fc9-71d4641bdc9e.png",
+    image: "/0a9e5c94-302a-4d24-9fc9-71d4641bdc9e.png",
     video: "https://player.vimeo.com/video/559615068?h=9fcbe3d1d0",
     slug: "the-last-mission"
   },
   {
     title: "City Shadows",
     category: "TV Series",
-    image: "public/lovable-uploads/a652a96f-b15a-4526-b10b-2157eeafe2fa.png",
+    image: "/a652a96f-b15a-4526-b10b-2157eeafe2fa.png",
     video: "https://player.vimeo.com/video/631242660?h=99d08e237d",
     slug: "city-shadows"
   },
   {
     title: "Beyond Borders",
     category: "Documentary",
-    image: "public/lovable-uploads/f35326e6-bba4-4e43-923a-685116abfcd1.png",
+    image: "/f35326e6-bba4-4e43-923a-685116abfcd1.png",
     video: "https://player.vimeo.com/video/581886427?h=d87215b96b",
     slug: "beyond-borders"
   },
   {
     title: "Midnight Express",
     category: "Short Film",
-    image: "public/lovable-uploads/2e3e23f2-101a-4275-82b4-95373ae796b5.png",
+    image: "/2e3e23f2-101a-4275-82b4-95373ae796b5.png",
     video: "https://player.vimeo.com/video/500040871?h=1f76e1f0e6",
     slug: "midnight-express"
   },
   {
     title: "Urban Pulse",
     category: "Music Video",
-    image: "public/lovable-uploads/59f4682a-8a68-44ee-a25f-f5f2ed224079.png",
+    image: "/59f4682a-8a68-44ee-a25f-f5f2ed224079.png",
     video: "https://player.vimeo.com/video/714031933?h=2985d3388c",
     slug: "urban-pulse"
   }

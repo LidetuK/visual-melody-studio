@@ -13,35 +13,35 @@ interface TeamMember {
 
 const teamMembers: TeamMember[] = [
   {
-    name: "Alexandra Reynolds",
-    role: "Creative Director",
-    bio: "Award-winning director with over 15 years of experience in film and commercial production.",
-    initials: "AR",
-    image: "/lovable-uploads/3090da7d-ed7e-44c1-8000-3596c8500119.png"
+    name: "Wondwosen Mulugeta",
+    role: "Post-Production Supervisor",
+    bio: "Elfig Entertaiment",
+    initials: "EP",
+    image: "/STAF 01.jpg"
   },
   {
-    name: "Marcus Chen",
+    name: "Ruth Mulugeta",
     role: "Head of Production",
-    bio: "Former studio executive who has overseen the production of over 30 feature films and documentaries.",
+    bio: "Ruth touch",
     initials: "MC"
   },
   {
-    name: "Sophia Williams",
+    name: "Ambachew Eshetu",
     role: "Music Producer",
-    bio: "Grammy-nominated producer with extensive experience in film scoring and soundtrack development.",
+    bio: "AMBA RECORDS",
     initials: "SW"
   },
   {
-    name: "David Okafor",
+    name: "Kids Admasu",
     role: "Animation Director",
-    bio: "Pioneering animator who has worked with major studios and created groundbreaking visual effects.",
+    bio: "21 Records  Kidanemaryam Admasu",
     initials: "DO"
   },
   {
-    name: "Ela Patel",
-    role: "Post-Production Supervisor",
-    bio: "Technical genius who ensures every project maintains the highest quality standards from shoot to delivery.",
-    initials: "EP"
+    name: "Nahom alemu",
+    role: "Creative Director",
+    bio: "Barook Images",
+    initials: "AR",
   }
 ];
 

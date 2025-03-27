@@ -8,32 +8,32 @@ import { Link } from 'react-router-dom';
 const behindSceneImages = [
   {
     id: 1,
-    url: "public/lovable-uploads/1d451c75-8255-4927-bd64-b8d4c575d89c.png",
+    url: "/1d451c75-8255-4927-bd64-b8d4c575d89c.png",
     caption: "Forest scene: Capturing traditional costumes in a natural setting"
   },
   {
     id: 2,
-    url: "public/lovable-uploads/46cd21d6-4fec-4a57-aed4-43769efe5f83.png",
+    url: "/46cd21d6-4fec-4a57-aed4-43769efe5f83.png",
     caption: "Directors evaluating footage during a scene shoot"
   },
   {
     id: 3,
-    url: "public/lovable-uploads/23e8ff29-a776-4d5f-b4a3-1172f355de2d.png",
+    url: "/23e8ff29-a776-4d5f-b4a3-1172f355de2d.png",
     caption: "Cityscape filming: Production team on location in urban setting"
   },
   {
     id: 4,
-    url: "public/lovable-uploads/c7b69243-2ae5-48f0-a6ca-11dde5305e17.png",
+    url: "/c7b69243-2ae5-48f0-a6ca-11dde5305e17.png",
     caption: "Two directors discussing the production details"
   },
   {
     id: 5,
-    url: "public/lovable-uploads/59f4682a-8a68-44ee-a25f-f5f2ed224079.png",
+    url: "/59f4682a-8a68-44ee-a25f-f5f2ed224079.png",
     caption: "Portrait session with local talent in traditional setting"
   },
   {
     id: 6,
-    url: "public/lovable-uploads/0a9e5c94-302a-4d24-9fc9-71d4641bdc9e.png",
+    url: "/0a9e5c94-302a-4d24-9fc9-71d4641bdc9e.png",
     caption: "Silhouette portrait against studio lighting"
   }
 ];
@@ -164,22 +164,22 @@ const BehindTheCamera = () => {
             {/* Small image gallery */}
             <div className="grid grid-cols-2 gap-4 mb-8">
               <img 
-                src="public/lovable-uploads/a4ba62f2-a6da-4881-a9d4-a9d4ca6a771c.png" 
+                src="/a4ba62f2-a6da-4881-a9d4-a9d4ca6a771c.png" 
                 alt="Behind the scenes" 
                 className="rounded-lg aspect-[4/3] object-cover"
               />
               <img 
-                src="public/lovable-uploads/f35326e6-bba4-4e43-923a-685116abfcd1.png" 
+                src="/f35326e6-bba4-4e43-923a-685116abfcd1.png" 
                 alt="Behind the scenes" 
                 className="rounded-lg aspect-[4/3] object-cover"
               />
               <img 
-                src="public/lovable-uploads/2e3e23f2-101a-4275-82b4-95373ae796b5.png" 
+                src="/2e3e23f2-101a-4275-82b4-95373ae796b5.png" 
                 alt="Behind the scenes" 
                 className="rounded-lg aspect-[4/3] object-cover"
               />
               <img 
-                src="public/lovable-uploads/e53e5850-a2df-466a-95a8-553d64baf378.png" 
+                src="/e53e5850-a2df-466a-95a8-553d64baf378.png" 
                 alt="Behind the scenes" 
                 className="rounded-lg aspect-[4/3] object-cover"
               />
@@ -203,7 +203,7 @@ const BehindTheCamera = () => {
           )}
         >
           <img 
-            src="public/lovable-uploads/f35326e6-bba4-4e43-923a-685116abfcd1.png" 
+            src="/f35326e6-bba4-4e43-923a-685116abfcd1.png" 
             alt="Beyond - Production artwork" 
             className="w-full h-full object-cover"
           />

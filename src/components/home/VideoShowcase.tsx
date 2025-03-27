@@ -14,13 +14,13 @@ const videoShowcaseItems: VideoShowcaseItem[] = [
   {
     tagline: "it all starts with a vision.",
     videoUrl: "https://www.youtube.com/embed/U3wlC7gocKo",
-    image: "public/lovable-uploads/a652a96f-b15a-4526-b10b-2157eeafe2fa.png",
+    image: "/a652a96f-b15a-4526-b10b-2157eeafe2fa.png",
     position: "right"
   },
   {
     tagline: "from concept to screen.",
     videoUrl: "https://www.youtube.com/embed/aqz-KE-bpKQ",
-    image: "public/lovable-uploads/23e8ff29-a776-4d5f-b4a3-1172f355de2d.png",
+    image: "/23e8ff29-a776-4d5f-b4a3-1172f355de2d.png",
     position: "left"
   },
   {
@@ -32,7 +32,7 @@ const videoShowcaseItems: VideoShowcaseItem[] = [
   {
     tagline: "exceptional visual storytelling.",
     videoUrl: "https://www.youtube.com/embed/j5rGm3kdTuk",
-    image: "public/lovable-uploads/40410ef2-4a24-4812-8d00-d96815d17e2b.png",
+    image: "/40410ef2-4a24-4812-8d00-d96815d17e2b.png",
     position: "left"
   }
 ];
