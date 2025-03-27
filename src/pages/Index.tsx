@@ -9,7 +9,6 @@ import Showcase from '@/components/home/Showcase';
 import Contact from '@/components/home/Contact';
 import ConceptToScreen from '@/components/home/ConceptToScreen';
 import BehindScenes from '@/components/home/BehindScenes';
-import Stories from '@/components/home/Stories';
 import AboutSection from '@/components/home/AboutSection';
 import VideoShowcase from '@/components/home/VideoShowcase';
 import TeamSection from '@/components/home/TeamSection';
@@ -38,15 +37,9 @@ const Index = () => {
         <BehindTheCamera />
         <TeamSection />
         <Contact />
-        <About />
-        
         <ConceptToScreen />
-        
-        
-        
         <BehindScenes />
         <Showcase />
-        
       </main>
       <Footer />
       <AIChatWidget />

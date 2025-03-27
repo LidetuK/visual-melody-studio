@@ -82,7 +82,7 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 flex h-full items-center justify-center">
         <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl text-center mt-20">
             {slides.map((slide, index) => (
               <div
                 key={index}
@@ -113,7 +113,7 @@ const Hero = () => {
                     onClick={() => setShowVideoModal(true)}
                     size="lg" 
                     variant="outline"
-                    className="border-white text-white hover:bg-white/10 text-lg px-8 group"
+                    className="border-elfign-gold text-elfign-gold hover:bg-elfign-gold/10 text-lg px-8 group"
                   >
                     <Play size={20} className="mr-2 group-hover:scale-110 transition-transform" />
                     Watch Showreel
@@ -140,14 +140,6 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Cinematic tagline - Inspired by your screenshots */}
-      <div className="absolute bottom-32 right-0 left-0 z-10 text-center md:text-right md:right-16 md:left-auto">
-        <h2 className="text-white text-3xl md:text-4xl lg:text-5xl font-light italic tracking-wider animate-fade-in opacity-0" 
-             style={{animationDelay: '1s', animationFillMode: 'forwards'}}>
-          it all starts with a vision.
-        </h2>
       </div>
 
       {/* Video Modal */}

@@ -11,10 +11,11 @@ const Footer = () => {
           {/* Logo and company info */}
           <div className="space-y-4">
             <div className="flex flex-col">
-              <span className="font-heading text-xl font-medium tracking-tight text-elfign-red">
-                ELFIGN
-                <span className="ml-1 text-elfign-gold">ENTERTAINMENT</span>
-              </span>
+              <img 
+                src="/lovable-uploads/3fd2d827-539a-4190-8fa3-8ea20e83b812.png" 
+                alt="Elfign Entertainment Logo" 
+                className="h-16 w-auto"
+              />
             </div>
             <p className="text-gray-400 text-sm max-w-xs">
               Creating compelling visual stories through film, photography, and music production.
