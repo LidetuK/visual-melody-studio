@@ -1,7 +1,9 @@
+
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { Play } from 'lucide-react';
 
 const Hero = () => {
   const videoRef = useRef<HTMLIFrameElement>(null);
@@ -74,8 +76,8 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-elfign-black/70 via-transparent to-elfign-black/90" />
       </div>
 
-      {/* Content moved to bottom */}
-      <div className="relative z-10 flex h-full items-end justify-center pb-20">
+      {/* Content moved more toward bottom */}
+      <div className="relative z-10 flex h-full items-end justify-center pb-32">
         <div className="container px-4 md:px-6 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-4 leading-tight">
             {slides[currentSlide].title}
@@ -83,20 +85,29 @@ const Hero = () => {
           <p className="mb-8 text-lg md:text-xl text-gray-300 max-w-lg mx-auto">
             {slides[currentSlide].subtitle}
           </p>
-          <Button 
-            asChild
-            size="lg" 
-            className="bg-elfign-red hover:bg-elfign-red/90 text-white text-lg px-8"
-          >
-            <Link to={slides[currentSlide].link}>
-              {slides[currentSlide].cta}
-            </Link>
-          </Button>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <Button 
+              variant="outline"
+              size="lg" 
+              className="bg-transparent border-2 border-elfign-gold text-elfign-gold hover:bg-elfign-gold hover:text-elfign-black text-lg px-8 rounded-full flex items-center gap-2"
+            >
+              <Play size={18} /> Watch Showreel
+            </Button>
+            <Button 
+              asChild
+              size="lg" 
+              className="bg-elfign-red hover:bg-elfign-red/90 text-white text-lg px-8"
+            >
+              <Link to={slides[currentSlide].link}>
+                {slides[currentSlide].cta}
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
 
       {/* Indicators */}
-      <div className="absolute bottom-12 left-0 right-0 flex justify-center space-x-2">
+      <div className="absolute bottom-20 left-0 right-0 flex justify-center space-x-2">
         {slides.map((_, index) => (
           <button
             key={index}

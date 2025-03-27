@@ -1,45 +1,52 @@
 
 import { Link } from 'react-router-dom';
-import { Mail, Phone } from 'lucide-react';
+import { Mail, Phone, ArrowUp } from 'lucide-react';
 import SocialMediaIcons from '@/components/common/SocialMediaIcons';
+import { Button } from '@/components/ui/button';
+import { scrollToElement } from '@/lib/smoothScroll';
 
 const Footer = () => {
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <footer className="bg-elfign-black text-white">
-      <div className="container mx-auto px-4 py-16 md:px-6">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
-          {/* Logo and company info */}
-          <div className="space-y-4">
-            <div className="flex flex-col">
-              <img 
-                src="/lovable-uploads/3fd2d827-539a-4190-8fa3-8ea20e83b812.png" 
-                alt="Elfign Entertainment Logo" 
-                className="h-16 w-auto"
-              />
-            </div>
-            <p className="text-gray-400 text-sm max-w-xs">
-              Creating compelling visual stories through film, photography, and music production.
-            </p>
-            <SocialMediaIcons />
+      {/* Top "Back to top" bar */}
+      <div className="bg-elfign-gold text-elfign-black py-3 px-4">
+        <div className="container mx-auto flex justify-between items-center">
+          <div>
+            <p className="font-medium">Bringing stories to life...</p>
           </div>
+          <Button 
+            variant="ghost" 
+            className="flex items-center space-x-1 text-elfign-black hover:text-elfign-red"
+            onClick={handleScrollToTop}
+          >
+            <span>BACK TO TOP</span>
+            <ArrowUp size={16} />
+          </Button>
+        </div>
+      </div>
 
-          {/* Quick links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium">Quick Links</h3>
+      <div className="container mx-auto px-4 py-8 md:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Left column - Links & Social media */}
+          <div className="space-y-6">
+            <SocialMediaIcons iconSize={24} className="mb-6" />
+            
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  Home
-                </Link>
-              </li>
               <li>
                 <Link to="/services" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/work" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  Our Work
+                <Link to="/contact" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
+                  Contact Us
                 </Link>
               </li>
               <li>
@@ -48,83 +55,83 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  Contact
+                <Link to="/work" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
+                  Our Work
+                </Link>
+              </li>
+              <li>
+                <Link to="/courses" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
+                  Courses
+                </Link>
+              </li>
+              <li>
+                <Link to="/privacy" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link to="/feedback" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
+                  Website Feedback
                 </Link>
               </li>
             </ul>
+
+            <div className="pt-6">
+              <p className="text-sm text-gray-400">123 Production Avenue</p>
+              <p className="text-sm text-gray-400">Los Angeles, CA 90028</p>
+              <p className="text-sm text-gray-400 mt-2">1-800-ELFIGN (353-4446)</p>
+            </div>
           </div>
 
-          {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-medium">Services</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/services/feature-films" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  Feature Films
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/tv-series" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  TV Series
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/documentary-films" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  Documentary Films
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/advertisement" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  Advertisement
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/music-production" className="text-gray-400 hover:text-elfign-gold transition-colors text-sm">
-                  Music Production
-                </Link>
-              </li>
-            </ul>
+          {/* Center column - Logo */}
+          <div className="flex justify-center items-center">
+            <Link to="/" className="transform hover:scale-105 transition-transform duration-300">
+              <img 
+                src="/lovable-uploads/3fd2d827-539a-4190-8fa3-8ea20e83b812.png" 
+                alt="Elfign Entertainment Logo" 
+                className="h-28 w-auto"
+              />
+            </Link>
           </div>
 
-          {/* Contact */}
+          {/* Right column - News/Blog highlights */}
           <div className="space-y-4">
-            <h3 className="text-lg font-medium">Contact Us</h3>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3 text-gray-400 text-sm">
-                <Mail size={18} className="mt-0.5 flex-shrink-0 text-elfign-gold" />
-                <span>info@elfignentertainment.com</span>
-              </li>
-              <li className="flex items-start space-x-3 text-gray-400 text-sm">
-                <Phone size={18} className="mt-0.5 flex-shrink-0 text-elfign-gold" />
-                <span>+1 (555) 123-4567</span>
-              </li>
-            </ul>
-            <div className="pt-4">
-              <Link 
-                to="/contact"
-                className="inline-flex items-center text-sm font-medium text-elfign-gold hover:text-elfign-red transition-colors"
-              >
-                Get in Touch
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 20 20" 
-                  fill="currentColor" 
-                  className="w-5 h-5 ml-1"
-                >
-                  <path 
-                    fillRule="evenodd" 
-                    d="M3 10a.75.75 0 01.75-.75h10.638L10.23 5.29a.75.75 0 111.04-1.08l5.5 5.25a.75.75 0 010 1.08l-5.5 5.25a.75.75 0 11-1.04-1.08l4.158-3.96H3.75A.75.75 0 013 10z" 
-                    clipRule="evenodd" 
-                  />
-                </svg>
-              </Link>
+            <h3 className="text-lg font-medium mb-4">Latest News</h3>
+            
+            <div className="space-y-6">
+              <article className="border-b border-gray-800 pb-4">
+                <p className="text-xs text-elfign-gold mb-1">Friday, June 14, 2024</p>
+                <Link to="/news/new-film-release" className="text-white hover:text-elfign-gold transition-colors">
+                  <h4 className="text-base font-medium">New Film Release: "Echoes of Tomorrow" coming this summer</h4>
+                </Link>
+              </article>
+              
+              <article className="border-b border-gray-800 pb-4">
+                <p className="text-xs text-elfign-gold mb-1">Wednesday, June 5, 2024</p>
+                <Link to="/news/industry-award" className="text-white hover:text-elfign-gold transition-colors">
+                  <h4 className="text-base font-medium">Elfign Entertainment wins prestigious industry award</h4>
+                </Link>
+              </article>
+              
+              <article className="border-b border-gray-800 pb-4">
+                <p className="text-xs text-elfign-gold mb-1">Monday, May 27, 2024</p>
+                <Link to="/news/summer-courses" className="text-white hover:text-elfign-gold transition-colors">
+                  <h4 className="text-base font-medium">Summer filmmaking courses now open for enrollment</h4>
+                </Link>
+              </article>
+              
+              <article>
+                <p className="text-xs text-elfign-gold mb-1">Thursday, May 16, 2024</p>
+                <Link to="/news/partnership-announcement" className="text-white hover:text-elfign-gold transition-colors">
+                  <h4 className="text-base font-medium">New partnership announced with Skyline Studios</h4>
+                </Link>
+              </article>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-          <p>© {new Date().getFullYear()} Elfign Entertainment. All rights reserved.</p>
+        <div className="mt-12 pt-6 border-t border-gray-800 text-center text-gray-400 text-sm">
+          <p>© {new Date().getFullYear()} Elfign Entertainment. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
