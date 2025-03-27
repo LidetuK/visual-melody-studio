@@ -77,26 +77,26 @@ const Hero = () => {
       </div>
 
       {/* Content moved more toward bottom */}
-      <div className="relative z-10 flex h-full items-end justify-center pb-32">
+      <div className="relative z-10 flex h-full items-end justify-center pb-24 md:pb-32">
         <div className="container px-4 md:px-6 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-4 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-4 leading-tight">
             {slides[currentSlide].title}
           </h1>
-          <p className="mb-8 text-lg md:text-xl text-gray-300 max-w-lg mx-auto">
+          <p className="mb-6 md:mb-8 text-base sm:text-lg md:text-xl text-gray-300 max-w-lg mx-auto">
             {slides[currentSlide].subtitle}
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Button 
               variant="outline"
               size="lg" 
-              className="bg-transparent border-2 border-elfign-gold text-elfign-gold hover:bg-elfign-gold hover:text-elfign-black text-lg px-8 rounded-full flex items-center gap-2"
+              className="bg-elfign-gold/10 border-2 border-elfign-gold text-elfign-gold hover:bg-elfign-gold hover:text-elfign-black text-lg w-full sm:w-auto px-6 sm:px-8 rounded-full flex items-center justify-center gap-2 transition-all duration-300"
             >
               <Play size={18} /> Watch Showreel
             </Button>
             <Button 
               asChild
               size="lg" 
-              className="bg-elfign-red hover:bg-elfign-red/90 text-white text-lg px-8"
+              className="bg-elfign-red hover:bg-elfign-red/90 text-white text-lg w-full sm:w-auto px-6 sm:px-8 transition-all duration-300"
             >
               <Link to={slides[currentSlide].link}>
                 {slides[currentSlide].cta}
@@ -106,8 +106,8 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Indicators */}
-      <div className="absolute bottom-20 left-0 right-0 flex justify-center space-x-2">
+      {/* Indicators - moved higher for better visibility on mobile */}
+      <div className="absolute bottom-16 sm:bottom-20 left-0 right-0 flex justify-center space-x-2">
         {slides.map((_, index) => (
           <button
             key={index}
@@ -115,7 +115,7 @@ const Hero = () => {
             className={cn(
               "h-2 w-2 rounded-full transition-all duration-300",
               currentSlide === index
-                ? "bg-elfign-gold w-8"
+                ? "bg-elfign-gold w-6 sm:w-8"
                 : "bg-white/40 hover:bg-white/60"
             )}
             aria-label={`Go to slide ${index + 1}`}
@@ -124,7 +124,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-6 sm:bottom-8 left-1/2 z-10 flex -translate-x-1/2 animate-bounce">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"
