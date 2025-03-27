@@ -1,15 +1,12 @@
-
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Play } from 'lucide-react';
 
 const Hero = () => {
   const videoRef = useRef<HTMLIFrameElement>(null);
   const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const [showVideoModal, setShowVideoModal] = useState(false);
 
   const slides = [
     {
@@ -33,12 +30,10 @@ const Hero = () => {
   ];
 
   useEffect(() => {
-    // Set video as loaded after a short delay to ensure smooth transition
     const timer = setTimeout(() => {
       setIsVideoLoaded(true);
     }, 1000);
 
-    // Auto-rotate slides
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
     }, 6000);
@@ -79,89 +74,43 @@ const Hero = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-elfign-black/70 via-transparent to-elfign-black/90" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full items-center justify-center">
-        <div className="container px-4 md:px-6">
-          <div className="mx-auto max-w-3xl text-center mt-20">
-            {slides.map((slide, index) => (
-              <div
-                key={index}
-                className={cn(
-                  "transition-all duration-1000 absolute inset-0 flex flex-col items-center justify-center",
-                  currentSlide === index
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-4 pointer-events-none"
-                )}
-              >
-                <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-4 leading-tight">
-                  {slide.title}
-                </h1>
-                <p className="mb-8 text-lg md:text-xl text-gray-300 max-w-lg mx-auto">
-                  {slide.subtitle}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button 
-                    asChild
-                    size="lg" 
-                    className="bg-elfign-red hover:bg-elfign-red/90 text-white text-lg px-8"
-                  >
-                    <Link to={slide.link}>
-                      {slide.cta}
-                    </Link>
-                  </Button>
-                  <Button 
-                    onClick={() => setShowVideoModal(true)}
-                    size="lg" 
-                    variant="outline"
-                    className="border-elfign-gold text-elfign-gold hover:bg-elfign-gold/10 text-lg px-8 group"
-                  >
-                    <Play size={20} className="mr-2 group-hover:scale-110 transition-transform" />
-                    Watch Showreel
-                  </Button>
-                </div>
-              </div>
-            ))}
-            
-            {/* Indicators */}
-            <div className="absolute bottom-12 left-0 right-0 flex justify-center space-x-2">
-              {slides.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentSlide(index)}
-                  className={cn(
-                    "h-2 w-2 rounded-full transition-all duration-300",
-                    currentSlide === index
-                      ? "bg-elfign-gold w-8"
-                      : "bg-white/40 hover:bg-white/60"
-                  )}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
+      {/* Content moved to bottom */}
+      <div className="relative z-10 flex h-full items-end justify-center pb-20">
+        <div className="container px-4 md:px-6 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold tracking-tighter text-white mb-4 leading-tight">
+            {slides[currentSlide].title}
+          </h1>
+          <p className="mb-8 text-lg md:text-xl text-gray-300 max-w-lg mx-auto">
+            {slides[currentSlide].subtitle}
+          </p>
+          <Button 
+            asChild
+            size="lg" 
+            className="bg-elfign-red hover:bg-elfign-red/90 text-white text-lg px-8"
+          >
+            <Link to={slides[currentSlide].link}>
+              {slides[currentSlide].cta}
+            </Link>
+          </Button>
         </div>
       </div>
 
-      {/* Video Modal */}
-      {showVideoModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 animate-fade-in">
-          <div className="relative w-11/12 max-w-5xl aspect-video bg-black">
-            <button 
-              onClick={() => setShowVideoModal(false)}
-              className="absolute -top-10 right-0 text-white hover:text-elfign-gold"
-            >
-              Close
-            </button>
-            <iframe 
-              src="https://player.vimeo.com/video/500604929?autoplay=1&title=0&byline=0&portrait=0" 
-              className="w-full h-full" 
-              frameBorder="0" 
-              allow="autoplay; fullscreen" 
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      )}
+      {/* Indicators */}
+      <div className="absolute bottom-12 left-0 right-0 flex justify-center space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentSlide(index)}
+            className={cn(
+              "h-2 w-2 rounded-full transition-all duration-300",
+              currentSlide === index
+                ? "bg-elfign-gold w-8"
+                : "bg-white/40 hover:bg-white/60"
+            )}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 animate-bounce">
