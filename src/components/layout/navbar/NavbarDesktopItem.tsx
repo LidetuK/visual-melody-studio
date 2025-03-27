@@ -1,74 +1,80 @@
 
+import { NavItem } from './navData';
 import { Link } from 'react-router-dom';
 import { cn } from '@/lib/utils';
+import { ChevronDown } from 'lucide-react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from '@/components/ui/navigation-menu';
 import NavbarDropdownItem from './NavbarDropdownItem';
 import NavbarViewAllLink from './NavbarViewAllLink';
 
-interface NavItemProps {
-  item: {
-    label: string;
-    href: string;
-    hasDropdown?: boolean;
-    dropdownItems?: { title: string; href: string; }[];
-  };
+interface NavbarDesktopItemProps {
+  item: NavItem;
   activePathname: string;
+  isHomePage: boolean;
+  scrolled: boolean;
 }
 
-const NavbarDesktopItem = ({ item, activePathname }: NavItemProps) => {
-  if (item.hasDropdown) {
+const NavbarDesktopItem = ({ item, activePathname, isHomePage, scrolled }: NavbarDesktopItemProps) => {
+  const isActive = activePathname === item.href || activePathname.startsWith(`${item.href}/`);
+  const textColor = isHomePage && !scrolled ? "text-white" : "";
+  
+  // Simple link without dropdown
+  if (!item.children) {
     return (
-      <div className="relative group">
-        <Link
-          to={item.href}
-          className={cn(
-            'flex items-center text-sm font-medium transition-colors line-animation group-hover:text-elfign-red',
-            activePathname.includes(item.href)
-              ? 'text-elfign-red'
-              : 'text-foreground/80'
-          )}
-        >
-          <span>{item.label}</span>
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            width="16" 
-            height="16" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180"
-          >
-            <polyline points="6 9 12 15 18 9"></polyline>
-          </svg>
-        </Link>
-        <div className="absolute left-0 z-10 mt-2 w-48 origin-top-left rounded-md bg-background/95 backdrop-blur-sm border border-border/30 p-1 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-          {item.dropdownItems?.map((dropdownItem) => (
-            <NavbarDropdownItem 
-              key={dropdownItem.href} 
-              title={dropdownItem.title} 
-              href={dropdownItem.href} 
-            />
-          ))}
-          <NavbarViewAllLink href={item.href} label={item.label} />
-        </div>
-      </div>
+      <Link
+        to={item.href}
+        className={cn(
+          "text-sm font-medium transition-colors hover:text-elfign-gold relative line-animation",
+          isActive ? "text-elfign-gold" : textColor
+        )}
+      >
+        {item.label}
+      </Link>
     );
   }
-  
+
+  // Link with dropdown
   return (
-    <Link
-      to={item.href}
-      className={cn(
-        'text-sm font-medium transition-colors line-animation',
-        activePathname === item.href
-          ? 'text-elfign-red'
-          : 'text-foreground/80 hover:text-elfign-red'
-      )}
-    >
-      {item.label}
-    </Link>
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger
+            className={cn(
+              "flex items-center gap-1 text-sm font-medium transition-colors hover:text-elfign-gold bg-transparent hover:bg-transparent focus:bg-transparent",
+              isActive ? "text-elfign-gold" : textColor
+            )}
+          >
+            {item.label}
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <ul className="grid gap-2 p-6 w-[400px] md:w-[500px] lg:w-[600px]">
+              {item.children.map((child) => (
+                <NavbarDropdownItem
+                  key={child.href}
+                  title={child.label}
+                  href={child.href}
+                  description={child.description}
+                  isActive={activePathname === child.href}
+                />
+              ))}
+              {item.viewAllHref && (
+                <NavbarViewAllLink
+                  href={item.viewAllHref}
+                  label={`View All ${item.label}`}
+                />
+              )}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 };
 

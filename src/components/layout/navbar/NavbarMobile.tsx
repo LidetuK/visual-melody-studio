@@ -10,9 +10,10 @@ interface NavbarMobileProps {
   activePathname: string;
   onClose: () => void;
   onAskAIClick: () => void;
+  isHomePage: boolean;
 }
 
-const NavbarMobile = ({ isOpen, activePathname, onClose, onAskAIClick }: NavbarMobileProps) => {
+const NavbarMobile = ({ isOpen, activePathname, onClose, onAskAIClick, isHomePage }: NavbarMobileProps) => {
   const handleAIButtonClick = () => {
     onClose();
     onAskAIClick();
@@ -36,6 +37,7 @@ const NavbarMobile = ({ isOpen, activePathname, onClose, onAskAIClick }: NavbarM
               item={item} 
               activePathname={activePathname} 
               onItemClick={onClose} 
+              isHomePage={isHomePage}
             />
           </div>
         ))}

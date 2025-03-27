@@ -9,7 +9,7 @@ const NavbarLogo = () => {
       aria-label="Elfign Entertainment Logo"
     >
       <img 
-        src="/lovable-uploads/3fd2d827-539a-4190-8fa3-8ea20e83b812.png" 
+        src="/lovable-uploads/fc4226e0-5ee9-4086-94b9-e1908995f50a.png" 
         alt="Elfign Entertainment Logo" 
         className="h-12 w-auto"
       />

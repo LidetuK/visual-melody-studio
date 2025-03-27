@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const scrolled = useScrollEffect();
   const location = useLocation();
+  const isHomePage = location.pathname === '/';
   
   // Initialize smooth scrolling
   useSmoothScroll();
@@ -39,18 +40,23 @@ const Navbar = () => {
           <NavbarDesktop 
             activePathname={location.pathname} 
             onAskAIClick={handleAskAIClick} 
+            isHomePage={isHomePage}
+            scrolled={scrolled}
           />
 
           {/* Mobile Navigation Toggle */}
           <button
-            className="flex items-center justify-center md:hidden"
+            className={cn(
+              "flex items-center justify-center md:hidden",
+              isHomePage && !scrolled ? "text-white" : "text-foreground"
+            )}
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
           >
             {isOpen ? (
-              <X className="h-6 w-6 text-foreground" />
+              <X className="h-6 w-6" />
             ) : (
-              <Menu className="h-6 w-6 text-foreground" />
+              <Menu className="h-6 w-6" />
             )}
           </button>
         </div>
@@ -62,6 +68,7 @@ const Navbar = () => {
         activePathname={location.pathname}
         onClose={() => setIsOpen(false)}
         onAskAIClick={handleAskAIClick} 
+        isHomePage={isHomePage}
       />
     </header>
   );
