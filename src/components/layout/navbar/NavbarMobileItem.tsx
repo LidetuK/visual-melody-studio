@@ -28,7 +28,7 @@ const NavbarMobileItem = ({ item, activePathname, onItemClick, isHomePage }: Nav
   };
 
   // Simple link without dropdown
-  if (!item.children) {
+  if (!item.hasDropdown) {
     return (
       <Link
         to={item.href}
@@ -65,7 +65,7 @@ const NavbarMobileItem = ({ item, activePathname, onItemClick, isHomePage }: Nav
 
       {isOpen && (
         <div className="mt-2 ml-4 space-y-2">
-          {item.children.map((child) => (
+          {item.dropdownItems && item.dropdownItems.map((child) => (
             <Link
               key={child.href}
               to={child.href}
@@ -77,18 +77,16 @@ const NavbarMobileItem = ({ item, activePathname, onItemClick, isHomePage }: Nav
               )}
               onClick={handleClick}
             >
-              {child.label}
+              {child.title}
             </Link>
           ))}
-          {item.viewAllHref && (
-            <Link
-              to={item.viewAllHref}
-              className="block py-1 text-base font-medium text-elfign-gold hover:text-elfign-gold/80"
-              onClick={handleClick}
-            >
-              View All {item.label}
-            </Link>
-          )}
+          <Link
+            to={item.href}
+            className="block py-1 text-base font-medium text-elfign-gold hover:text-elfign-gold/80"
+            onClick={handleClick}
+          >
+            View All {item.label}
+          </Link>
         </div>
       )}
     </div>

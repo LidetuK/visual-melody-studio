@@ -5,13 +5,17 @@ import { cn } from '@/lib/utils';
 interface DropdownItemProps {
   title: string;
   href: string;
+  isActive?: boolean;
 }
 
-const NavbarDropdownItem = ({ title, href }: DropdownItemProps) => {
+const NavbarDropdownItem = ({ title, href, isActive }: DropdownItemProps) => {
   return (
     <Link 
       to={href} 
-      className="block rounded-sm px-3 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-elfign-red"
+      className={cn(
+        "block rounded-sm px-3 py-2 text-sm text-foreground/80 hover:bg-accent hover:text-elfign-red",
+        isActive && "text-elfign-gold"
+      )}
     >
       {title}
     </Link>

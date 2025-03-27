@@ -26,7 +26,7 @@ const NavbarDesktopItem = ({ item, activePathname, isHomePage, scrolled }: Navba
   const textColor = isHomePage && !scrolled ? "text-white" : "";
   
   // Simple link without dropdown
-  if (!item.children) {
+  if (!item.hasDropdown) {
     return (
       <Link
         to={item.href}
@@ -55,21 +55,18 @@ const NavbarDesktopItem = ({ item, activePathname, isHomePage, scrolled }: Navba
           </NavigationMenuTrigger>
           <NavigationMenuContent>
             <ul className="grid gap-2 p-6 w-[400px] md:w-[500px] lg:w-[600px]">
-              {item.children.map((child) => (
+              {item.dropdownItems && item.dropdownItems.map((child) => (
                 <NavbarDropdownItem
                   key={child.href}
-                  title={child.label}
+                  title={child.title}
                   href={child.href}
-                  description={child.description}
                   isActive={activePathname === child.href}
                 />
               ))}
-              {item.viewAllHref && (
-                <NavbarViewAllLink
-                  href={item.viewAllHref}
-                  label={`View All ${item.label}`}
-                />
-              )}
+              <NavbarViewAllLink
+                href={item.href}
+                label={item.label}
+              />
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
