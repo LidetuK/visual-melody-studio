@@ -34,15 +34,19 @@ const Index = () => {
         <Hero />
         <VideoShowcase />
         <AboutSection />
-        <About />
-        <ConceptToScreen />
         <Services />
         <BehindTheCamera />
-        <Stories />
-        <BehindScenes />
-        <Showcase />
         <TeamSection />
         <Contact />
+        <About />
+        
+        <ConceptToScreen />
+        
+        
+        
+        <BehindScenes />
+        <Showcase />
+        
       </main>
       <Footer />
       <AIChatWidget />

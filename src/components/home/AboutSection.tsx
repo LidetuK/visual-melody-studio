@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useState, useEffect, useRef } from "react";
@@ -38,6 +37,7 @@ const AboutSection = () => {
     <section
       ref={sectionRef}
       className="bg-elfign-black py-24 sm:py-32 text-white overflow-hidden"
+      style={{ fontFamily: "'Playfair Display', serif" }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl">
         <div
@@ -52,18 +52,19 @@ const AboutSection = () => {
 
           <div className="max-w-4xl mx-auto text-center">
             <p className="text-lg sm:text-xl leading-relaxed mb-16">
-              Our company focuses mainly on production and post-production of audiovisual
-              material of all kinds but especially on brand videos, commercials and testimonial
-              videos, and does it for over 12 years now. During this period of time, our young team
-              managed to acquire plenty of valued experience, especially with working on both
-              domestic and international projects.
+              Our company, based in Ethiopia, specializes in the production and
+              post-production of high-quality audiovisual content, with a
+              particular focus on video productions and music. With over 12
+              years of experience, our dynamic team has worked on both local and
+              international projects, gaining invaluable expertise in delivering
+              exceptional brand videos, commercials, and testimonial videos.
             </p>
 
             <div className="flex justify-center">
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full border-white text-white hover:bg-white/10 px-10 py-6 text-base h-auto"
+                className="rounded-full border-red-500 text-red-500 hover:bg-red-600 hover:text-white px-10 py-6 text-base h-auto"
               >
                 <Link to="/about">our team.</Link>
               </Button>
