@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import SocialMediaIcons from '@/components/common/SocialMediaIcons';
 import NavbarMobileItem from './NavbarMobileItem';
 import { navItems } from './navData';
+import { useEffect } from 'react';
 
 interface NavbarMobileProps {
   isOpen: boolean;
@@ -19,6 +20,19 @@ const NavbarMobile = ({ isOpen, activePathname, onClose, onAskAIClick, isHomePag
     onAskAIClick();
   };
 
+  // Prevent body scrolling when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <div
       className={cn(
@@ -30,7 +44,7 @@ const NavbarMobile = ({ isOpen, activePathname, onClose, onAskAIClick, isHomePag
         'transition-opacity duration-300 ease-in-out'
       )}
     >
-      <div className="flex flex-col items-center justify-center h-full space-y-8 p-4">
+      <div className="flex flex-col items-center justify-start h-full space-y-6 p-6 pt-24 overflow-y-auto">
         {navItems.map((item) => (
           <div key={item.href} className="w-full max-w-xs">
             <NavbarMobileItem 
@@ -44,7 +58,7 @@ const NavbarMobile = ({ isOpen, activePathname, onClose, onAskAIClick, isHomePag
         
         {/* Social Media Icons for mobile */}
         <div className="pt-4 w-full max-w-xs flex justify-center">
-          <SocialMediaIcons />
+          <SocialMediaIcons iconSize={20} />
         </div>
         
         <Button

@@ -87,9 +87,9 @@ const Footer = () => {
           <div className="flex justify-center items-center">
             <Link to="/" className="transform hover:scale-105 transition-transform duration-300">
               <img 
-                src="/lovable-uploads/fc4226e0-5ee9-4086-94b9-e1908995f50a.png" 
+                src="/lovable-uploads/5583981d-932b-4d6e-bcb7-916eaeaa4fb1.png" 
                 alt="Elfign Entertainment Logo" 
-                className="h-28 w-auto"
+                className="h-36 w-auto" // Increased from h-28 to h-36
               />
             </Link>
           </div>
