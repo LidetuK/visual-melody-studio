@@ -26,7 +26,7 @@ const videoShowcaseItems: VideoShowcaseItem[] = [
   {
     tagline: "we bring stories to life.",
     videoUrl: "https://www.youtube.com/embed/pCgf9bPQpZo",
-    image: "public/lovable-uploads/1d451c75-8255-4927-bd64-b8d4c575d89c.png",
+    image: "/1d451c75-8255-4927-bd64-b8d4c575d89c.png",
     position: "right"
   },
   {

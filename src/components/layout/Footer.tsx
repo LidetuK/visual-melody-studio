@@ -78,7 +78,7 @@ const Footer = () => {
 
             <div className="pt-6">
               <p className="text-sm text-gray-400">123 Production Avenue</p>
-              <p className="text-sm text-gray-400">Los Angeles, CA 90028</p>
+              <p className="text-sm text-gray-400">Ethiopia, Addis Ababa</p>
               <p className="text-sm text-gray-400 mt-2">1-800-ELFIGN (353-4446)</p>
             </div>
           </div>
